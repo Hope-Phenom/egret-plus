@@ -276,7 +276,7 @@ export function measure(target: any, propertyKey: string, descriptor: TypedPrope
         return promise.then((result) => {
             const timeBuildEnd = (new Date()).getTime();
             const timeBuildUsed = (timeBuildEnd - timeBuildStart) / 1000;
-            console.log(tr(1108, timeBuildUsed));
+            console.log(tr(1108, timeBuildUsed), tr(7271001, new Date().toLocaleTimeString()));
             return result;
         })
     }

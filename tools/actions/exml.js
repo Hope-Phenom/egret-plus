@@ -14,8 +14,8 @@ function publishEXML(exmls, exmlPublishPolicy, themeDatas) {
     themeDatas.forEach(function (theme) {
         if (!theme.exmls || theme.autoGenerateExmlsList) {
             theme.exmls = [];
-            for (var _i = 0, exmls_1 = exmls; _i < exmls_1.length; _i++) {
-                var exml_1 = exmls_1[_i];
+            for (var _i = 0, exmls_2 = exmls; _i < exmls_2.length; _i++) {
+                var exml_1 = exmls_2[_i];
                 theme.exmls.push(exml_1.filename);
             }
         }
@@ -44,8 +44,8 @@ function publishEXML(exmls, exmlPublishPolicy, themeDatas) {
     //6.对exml文件列表进行筛选
     var screenExmls = [];
     var versionExmlHash = {};
-    for (var _i = 0, exmls_2 = exmls; _i < exmls_2.length; _i++) {
-        var exml_2 = exmls_2[_i];
+    for (var _i = 0, exmls_1 = exmls; _i < exmls_1.length; _i++) {
+        var exml_2 = exmls_1[_i];
         for (var _a = 0, paths_1 = paths; _a < paths_1.length; _a++) {
             var path = paths_1[_a];
             // if (path === exml.filename) {

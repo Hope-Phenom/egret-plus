@@ -346,7 +346,9 @@ class EgretLauncherProxy {
                     const result = target[p];
                     if (!result) {
                         const minVersion = minVersions[p];
-                        throw `找不到 LauncherAPI:${p},请安装最新的白鹭引擎启动器客户端解决此问题,最低版本要求:${minVersion},下载地址:https://egret.com/products/engine.html`//i18n
+                        if (typeof p !== "symbol") {
+                            throw `找不到 LauncherAPI:${p},请安装最新的白鹭引擎启动器客户端解决此问题,最低版本要求:${minVersion},下载地址:https://egret.com/products/engine.html`//i18n
+                        }
                     }
                     return result.bind(target)
                 }

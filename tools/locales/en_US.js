@@ -237,6 +237,7 @@ locale_strings[12002] = "Please set the default screen size";
 locale_strings[12003] = "Please select the Scale Mode";
 locale_strings[12004] = "Please select modules";
 locale_strings[12005] = "Please select the platform";
+locale_strings[7271001] = "，Complete at {0}";
 var helpModule;
 (function (helpModule) {
     helpModule.help_dict = {
