@@ -14063,6 +14063,11 @@ var egret;
                  * 是否被暂停
                  */
                 this.isPaused = false;
+                /**
+                 * @private
+                 * 暂停开始的时间
+                 */
+                this.pauseTimeStamp = 0;
                 if (true && egret.ticker) {
                     egret.$error(1008, "egret.sys.SystemTicker");
                 }
@@ -14179,6 +14184,7 @@ var egret;
              */
             SystemTicker.prototype.pause = function () {
                 this.isPaused = true;
+                this.pauseTimeStamp = egret.getTimer();
             };
             /**
              * Resume the ticker.
@@ -14194,6 +14200,10 @@ var egret;
              */
             SystemTicker.prototype.resume = function () {
                 this.isPaused = false;
+                var updateRTFunc = egret["$updateRemainingTime"];
+                if (updateRTFunc && this.pauseTimeStamp) {
+                    updateRTFunc(egret.getTimer() - this.pauseTimeStamp);
+                }
             };
             /**
              * @private

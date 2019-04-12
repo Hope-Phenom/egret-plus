@@ -9394,6 +9394,11 @@ declare namespace egret.sys {
          */
         private isPaused;
         /**
+         * @private
+         * 暂停开始的时间
+         */
+        private pauseTimeStamp;
+        /**
          * Pause the ticker.
          * @version Egret 5.0.2
          * @platform Web,Native

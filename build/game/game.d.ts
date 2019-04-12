@@ -2479,4 +2479,11 @@ declare namespace egret {
      * @language zh_CN
      */
     function clearTimeout(key: number): void;
+    /**
+     * 延后所有的settimeout回调
+     * @private
+     *
+     * @param dt 要延后的时间，单位毫秒
+     */
+    function $updateRemainingTime(dt: number): void;
 }

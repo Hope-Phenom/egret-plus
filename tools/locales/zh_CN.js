@@ -238,7 +238,7 @@ var egret;
     locale_strings[12003] = "选择屏幕缩放模式";
     locale_strings[12004] = "选择扩展模块";
     locale_strings[12005] = "请选择希望发布的平台";
-    locale_strings[7271001] = "，完成于 {0}";
+    locale_strings[7271001] = "，完成于：{0}";
 })(egret || (egret = {}));
 var helpModule;
 (function (helpModule) {
