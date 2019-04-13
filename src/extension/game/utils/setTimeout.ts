@@ -30,6 +30,10 @@ namespace egret {
 
     let setTimeoutCache: any = {};
     let setTimeoutIndex: number = 0;
+    /**
+     * 用于标记暂停时的时间点
+     */
+    let pauseTimeStamp: number | null = null;
 
     let setTimeoutCount: number = 0;
     let lastTime: number = 0;
@@ -103,6 +107,9 @@ namespace egret {
      * @param dt 
      */
     function timeoutUpdate(timeStamp: number): boolean {
+        if (pauseTimeStamp) {
+            return;
+        }
         let dt: number = timeStamp - lastTime;
         lastTime = timeStamp;
 
@@ -125,12 +132,49 @@ namespace egret {
      * 
      * @param dt 要延后的时间，单位毫秒
      */
-    export function $updateRemainingTime(dt: number): void {
+    function updateRemainingTime(dt: number): void {
         for (const key in setTimeoutCache) {
             if (setTimeoutCache.hasOwnProperty(key)) {
                 const timeOut = setTimeoutCache[key];
                 timeOut.delay += dt;
             }
         }
+    }
+
+    /**
+     * 暂停所有延迟后运行的函数。
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language zh_CN
+     */
+    /**
+     * Pause all egret Timeout Function.
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language en_US
+     */
+    export function pauseAllTimeOut() {
+        pauseTimeStamp = egret.getTimer();
+    }
+
+    /**
+     * 恢复已暂停的所有延迟后运行的函数。
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language zh_CN
+     */
+    /**
+     * Resume all egret Timeout Function.
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language en_US
+     */
+    export function resumeAllTimeOut() {
+        if (!pauseTimeStamp) {
+            return;
+        }
+        const dt = egret.getTimer() - pauseTimeStamp;
+        pauseTimeStamp = null;
+        updateRemainingTime(dt);
     }
 }
