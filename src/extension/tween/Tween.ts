@@ -71,6 +71,11 @@ namespace egret {
          */
         private static _tweens: Tween[] = [];
         /**
+         * 暂停所有Tween时记录下每个被暂停的对象
+         * @private
+         */
+        private static _pauseTweens: Tween[] = [];
+        /**
          * @private
          */
         private static IGNORE = {};
@@ -260,7 +265,8 @@ namespace egret {
          * @param paused 
          */
         private static tick(timeStamp: number, paused = false): boolean {
-            let delta = timeStamp - Tween._lastTime;
+            let delta: number = null;
+            delta = timeStamp - Tween._lastTime;
             Tween._lastTime = timeStamp;
 
             let tweens: Tween[] = Tween._tweens.concat();
@@ -331,6 +337,49 @@ namespace egret {
             tweens.length = 0;
         }
 
+		/**
+         * 暂停所有 Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+		 */
+		/**
+         * Pause all Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+		 */
+        public static pauseAllTweens(): void {
+            let tweens: Tween[] = Tween._tweens;
+            for (let i = 0, l = tweens.length; i < l; i++) {
+                let tween: Tween = tweens[i];
+                tween.pause();
+                Tween._pauseTweens.push(tween);
+            }
+        }
+
+        /**
+         * 恢复播放已暂停的所有 Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+		 */
+		/**
+         * Resume all Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+		 */
+        public static resumeAllTweens(): void {
+            egret.Tween._lastTime = egret.getTimer();
+            const pauseTweens = Tween._pauseTweens;
+            for (let i = 0; i < pauseTweens.length; i++) {
+                const tween = pauseTweens[i];
+                tween.resume();
+            }
+            Tween._pauseTweens = [];
+        }
+
         /**
          * 创建一个 egret.Tween 对象
          * @private
@@ -349,7 +398,7 @@ namespace egret {
          * @param props 
          * @param pluginData 
          */
-        private initialize(target:any, props: any, pluginData: any): void {
+        private initialize(target: any, props: any, pluginData: any): void {
             this._target = target;
             if (props) {
                 this._useTicks = props.useTicks;
@@ -394,11 +443,11 @@ namespace egret {
             if (t >= this.duration) {
                 if (this.loop) {
                     var newTime = t % this.duration;
-					if (t > 0 && newTime === 0) {
-						t = this.duration;
-					} else {
-						t = newTime;
-					}
+                    if (t > 0 && newTime === 0) {
+                        t = this.duration;
+                    } else {
+                        t = newTime;
+                    }
                 }
                 else {
                     t = this.duration;
@@ -557,7 +606,7 @@ namespace egret {
          * @language zh_CN
 		 */
         public setPaused(value: boolean): Tween {
-            if(this.paused == value) {
+            if (this.paused == value) {
                 return this;
             }
             this.paused = value;
@@ -802,25 +851,40 @@ namespace egret {
 
 		/**
          * Pause
-		 * @param tween {egret.Tween} The Tween object to be operated. Default: this
 		 * @returns {egret.Tween} Tween object itself
-         * @version Egret 2.4
+         * @version EgretPlus 0.1 Bugfix
          * @platform Web,Native
          * @language en_US
 		 */
 		/**
          * 暂停
-		 * @param tween {egret.Tween} 需要操作的 Tween 对象，默认this
 		 * @returns {egret.Tween} Tween对象本身
-         * @version Egret 2.4
+         * @version EgretPlus 0.1 修正
          * @platform Web,Native
          * @language zh_CN
 		 */
-        public pause(tween?: Tween): Tween {
-            if (!tween) {
-                tween = this;
-            }
-            return this.call(tween.setPaused, tween, [true]);
+        public pause = (): Tween => {
+            this.setPaused(true);
+            return this;
+        }
+
+		/**
+         * 恢复
+		 * @returns {egret.Tween} Tween对象本身
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+		 */
+        /**
+         * Resume
+		 * @returns {egret.Tween} Tween object itself
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+		 */
+        public resume = (): Tween => {
+            this.setPaused(false);
+            return this;
         }
 
 		/**

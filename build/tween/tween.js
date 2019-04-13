@@ -757,6 +757,42 @@ var egret;
              * @private
              */
             _this.passive = false;
+            /**
+             * Pause
+             * @returns {egret.Tween} Tween object itself
+             * @version EgretPlus 0.1 Bugfix
+             * @platform Web,Native
+             * @language en_US
+             */
+            /**
+             * 暂停
+             * @returns {egret.Tween} Tween对象本身
+             * @version EgretPlus 0.1 修正
+             * @platform Web,Native
+             * @language zh_CN
+             */
+            _this.pause = function () {
+                _this.setPaused(true);
+                return _this;
+            };
+            /**
+             * 恢复
+             * @returns {egret.Tween} Tween对象本身
+             * @version EgretPlus 0.1
+             * @platform Web,Native
+             * @language zh_CN
+             */
+            /**
+             * Resume
+             * @returns {egret.Tween} Tween object itself
+             * @version EgretPlus 0.1
+             * @platform Web,Native
+             * @language en_US
+             */
+            _this.resume = function () {
+                _this.setPaused(false);
+                return _this;
+            };
             _this.initialize(target, props, pluginData);
             return _this;
         }
@@ -875,7 +911,8 @@ var egret;
          */
         Tween.tick = function (timeStamp, paused) {
             if (paused === void 0) { paused = false; }
-            var delta = timeStamp - Tween._lastTime;
+            var delta = null;
+            delta = timeStamp - Tween._lastTime;
             Tween._lastTime = timeStamp;
             var tweens = Tween._tweens.concat();
             for (var i = tweens.length - 1; i >= 0; i--) {
@@ -940,6 +977,47 @@ var egret;
                 tween_2._target.tween_count = 0;
             }
             tweens.length = 0;
+        };
+        /**
+         * 暂停所有 Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+         */
+        /**
+         * Pause all Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+         */
+        Tween.pauseAllTweens = function () {
+            var tweens = Tween._tweens;
+            for (var i = 0, l = tweens.length; i < l; i++) {
+                var tween_3 = tweens[i];
+                tween_3.pause();
+                Tween._pauseTweens.push(tween_3);
+            }
+        };
+        /**
+         * 恢复播放已暂停的所有 Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+         */
+        /**
+         * Resume all Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+         */
+        Tween.resumeAllTweens = function () {
+            egret.Tween._lastTime = egret.getTimer();
+            var pauseTweens = Tween._pauseTweens;
+            for (var i = 0; i < pauseTweens.length; i++) {
+                var tween_4 = pauseTweens[i];
+                tween_4.resume();
+            }
+            Tween._pauseTweens = [];
         };
         /**
          * @private
@@ -1384,28 +1462,6 @@ var egret;
             return this.call(tween.setPaused, tween, [false]);
         };
         /**
-         * Pause
-         * @param tween {egret.Tween} The Tween object to be operated. Default: this
-         * @returns {egret.Tween} Tween object itself
-         * @version Egret 2.4
-         * @platform Web,Native
-         * @language en_US
-         */
-        /**
-         * 暂停
-         * @param tween {egret.Tween} 需要操作的 Tween 对象，默认this
-         * @returns {egret.Tween} Tween对象本身
-         * @version Egret 2.4
-         * @platform Web,Native
-         * @language zh_CN
-         */
-        Tween.prototype.pause = function (tween) {
-            if (!tween) {
-                tween = this;
-            }
-            return this.call(tween.setPaused, tween, [true]);
-        };
-        /**
          * @method egret.Tween#tick
          * @param delta {number}
          * @private
@@ -1440,6 +1496,11 @@ var egret;
          * @private
          */
         Tween._tweens = [];
+        /**
+         * 暂停所有Tween时记录下每个被暂停的对象
+         * @private
+         */
+        Tween._pauseTweens = [];
         /**
          * @private
          */
