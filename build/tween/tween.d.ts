@@ -543,6 +543,11 @@ declare namespace egret {
          */
         private static _tweens;
         /**
+         * 暂停所有Tween时记录下每个被暂停的对象
+         * @private
+         */
+        private static _pauseTweens;
+        /**
          * @private
          */
         private static IGNORE;
@@ -714,6 +719,32 @@ declare namespace egret {
          * @language zh_CN
          */
         static removeAllTweens(): void;
+        /**
+         * 暂停所有 Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+         */
+        /**
+         * Pause all Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+         */
+        static pauseAllTweens(): void;
+        /**
+         * 恢复播放已暂停的所有 Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+         */
+        /**
+         * Resume all Tween
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+         */
+        static resumeAllTweens(): void;
         /**
          * 创建一个 egret.Tween 对象
          * @private
@@ -915,21 +946,34 @@ declare namespace egret {
         play(tween?: Tween): Tween;
         /**
          * Pause
-         * @param tween {egret.Tween} The Tween object to be operated. Default: this
          * @returns {egret.Tween} Tween object itself
-         * @version Egret 2.4
+         * @version EgretPlus 0.1 Bugfix
          * @platform Web,Native
          * @language en_US
          */
         /**
          * 暂停
-         * @param tween {egret.Tween} 需要操作的 Tween 对象，默认this
          * @returns {egret.Tween} Tween对象本身
-         * @version Egret 2.4
+         * @version EgretPlus 0.1 修正
          * @platform Web,Native
          * @language zh_CN
          */
-        pause(tween?: Tween): Tween;
+        pause: () => Tween;
+        /**
+         * 恢复
+         * @returns {egret.Tween} Tween对象本身
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language zh_CN
+         */
+        /**
+         * Resume
+         * @returns {egret.Tween} Tween object itself
+         * @version EgretPlus 0.1
+         * @platform Web,Native
+         * @language en_US
+         */
+        resume: () => Tween;
         /**
          * @method egret.Tween#tick
          * @param delta {number}
