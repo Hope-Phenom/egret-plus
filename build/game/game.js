@@ -4727,6 +4727,10 @@ var egret;
 (function (egret) {
     var setTimeoutCache = {};
     var setTimeoutIndex = 0;
+    /**
+     * 用于标记暂停时的时间点
+     */
+    var pauseTimeStamp = null;
     var setTimeoutCount = 0;
     var lastTime = 0;
     /**
@@ -4799,6 +4803,9 @@ var egret;
      * @param dt
      */
     function timeoutUpdate(timeStamp) {
+        if (pauseTimeStamp) {
+            return;
+        }
         var dt = timeStamp - lastTime;
         lastTime = timeStamp;
         for (var key in setTimeoutCache) {
@@ -4818,7 +4825,7 @@ var egret;
      *
      * @param dt 要延后的时间，单位毫秒
      */
-    function $updateRemainingTime(dt) {
+    function updateRemainingTime(dt) {
         for (var key in setTimeoutCache) {
             if (setTimeoutCache.hasOwnProperty(key)) {
                 var timeOut = setTimeoutCache[key];
@@ -4826,5 +4833,41 @@ var egret;
             }
         }
     }
-    egret.$updateRemainingTime = $updateRemainingTime;
+    /**
+     * 暂停所有延迟后运行的函数。
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language zh_CN
+     */
+    /**
+     * Pause all egret Timeout Function.
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language en_US
+     */
+    function pauseAllTimeOut() {
+        pauseTimeStamp = egret.getTimer();
+    }
+    egret.pauseAllTimeOut = pauseAllTimeOut;
+    /**
+     * 恢复已暂停的所有延迟后运行的函数。
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language zh_CN
+     */
+    /**
+     * Resume all egret Timeout Function.
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language en_US
+     */
+    function resumeAllTimeOut() {
+        if (!pauseTimeStamp) {
+            return;
+        }
+        var dt = egret.getTimer() - pauseTimeStamp;
+        pauseTimeStamp = null;
+        updateRemainingTime(dt);
+    }
+    egret.resumeAllTimeOut = resumeAllTimeOut;
 })(egret || (egret = {}));

@@ -2480,10 +2480,29 @@ declare namespace egret {
      */
     function clearTimeout(key: number): void;
     /**
-     * 延后所有的settimeout回调
-     * @private
-     *
-     * @param dt 要延后的时间，单位毫秒
+     * 暂停所有延迟后运行的函数。
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language zh_CN
      */
-    function $updateRemainingTime(dt: number): void;
+    /**
+     * Pause all egret Timeout Function.
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language en_US
+     */
+    function pauseAllTimeOut(): void;
+    /**
+     * 恢复已暂停的所有延迟后运行的函数。
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language zh_CN
+     */
+    /**
+     * Resume all egret Timeout Function.
+     * @version EgretPlus 0.1
+     * @platform Web,Native
+     * @language en_US
+     */
+    function resumeAllTimeOut(): void;
 }
