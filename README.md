@@ -1,19 +1,16 @@
 # Egret-Plus
 
-## 说明
-    Egret-Plus是个人（Hope.Phenom）出于个人的需求和理解，在原开源引擎Egret进行二次开发的结果。
-    原Readme和开源协议请阅读后缀带有_egret的文件。
+<br>
 
-## 增强模块
+![欢迎使用Egret-Plus！](https://github.com/ChaoShengze/egret-plus/raw/master/docs/amWiki/images/logo.png "欢迎使用Egret-Plus！")
 
-### Tools
-1. 支持完成时间提示
+### 欢迎使用 Egret-Plus !
+—— **Egret-Plus 是基于开源游戏引擎 Egret ([GitHub](https://github.com/egret-labs/egret-core)) 二次开发的 Egret 游戏引擎的增强版**
 
-### game库
-1. setTimeOut新增pauseAllTimeOut和resumeAllTimeOut功能，可用于实现全局暂停功能
-
-### Tween库
-1. egret.Tween新增pauseAllTween和resumeAllTween功能，可用于实现全局暂停功能
-
-## Egret-Plus 独立模块
-    敬请期待！
+### Egret-Plus 的优势
+- **在原版引擎的基础上提供了更多的便利性功能**
+- **完善了原版引擎的部分功能**
+- **提供了一套易用的框架，创建项目时可选使用**
+- **得益于 Egret 引擎本身的可靠性，只做了非破坏性修改的 Egret-Plus 依旧可靠**
+- **完全与 Egret 工作流兼容，您可以在没有任何修改的前提下使用 Egret-Plus，并依旧享受所有 Egret 工具带来的便利**
+- **更多功能还在开发中...**

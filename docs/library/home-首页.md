@@ -2,7 +2,7 @@
 
 <br>
 
-![欢迎使用Egret-Plus！](../amwiki/images/logo.png "欢迎使用Egret-Plus！")
+![欢迎使用Egret-Plus！](https://github.com/ChaoShengze/egret-plus/raw/master/docs/amWiki/images/logo.png "欢迎使用Egret-Plus！")
 
 ### 欢迎使用 Egret-Plus !
 —— **Egret-Plus 是基于开源游戏引擎 Egret ([GitHub](https://github.com/egret-labs/egret-core)) 二次开发的 Egret 游戏引擎的增强版**
@@ -16,4 +16,4 @@
 - **更多功能还在开发中...**
 
 ### 当前版本
-[5.2.1701 点此跳转至详情](https://github.com/egret-labs/egret-core)
+[5.2.1701 点此跳转至详情]()
