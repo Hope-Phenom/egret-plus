@@ -1318,7 +1318,7 @@ var egret;
             }
             self.$skewYdeg = value;
             value = clampRotation(value);
-            value = value / 180 * Math.PI;
+            value = (value + self.$rotation) / 180 * Math.PI;
             self.$skewY = value;
             self.$matrixDirty = true;
             self.$updateUseTransform();
@@ -17173,7 +17173,7 @@ var egret;
          * @platform Web,Native
          * @language zh_CN
          */
-        Capabilities.engineVersion = "5.2.17";
+        Capabilities.engineVersion = "5.2.18";
         /***
          * current render mode.
          * @type {string}

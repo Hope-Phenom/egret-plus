@@ -150,7 +150,7 @@ function publishEXML(exmls, exmlPublishPolicy, themeDatas) {
                 }
                 content += "generateEUI.paths['" + item.path + "'] = window." + item.className + " = " + item.gjs;
             }
-            var result = namespaces.map(function (v) { return "window." + v + "={};"; }).join("\n");
+            var result = namespaces.map(function (v) { return "window." + v + "=window." + v + "||{};"; }).join("\n");
             content = result + content;
             path = path.replace("thm.json", "thm.js");
             return { path: path, content: content };
