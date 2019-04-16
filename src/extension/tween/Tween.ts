@@ -351,8 +351,11 @@ namespace egret {
 		 */
         public static pauseAllTweens(): void {
             let tweens: Tween[] = Tween._tweens;
-            for (let i = 0, l = tweens.length; i < l; i++) {
-                let tween: Tween = tweens[i];
+            if (tweens.length <= 0) {
+                return;
+            }
+            for (let i = 0; i < tweens.length; i++) {
+                const tween = tweens[i];
                 tween.pause();
                 Tween._pauseTweens.push(tween);
             }

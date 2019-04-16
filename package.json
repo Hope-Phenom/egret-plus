@@ -1,8 +1,8 @@
 {
   "name": "egret",
-  "version": "5.2.1701",
+  "version": "5.2.1801",
   "private": true,
-  "author": "egret-labs",
+  "author": "Hope_Phenom",
   "bin": {
     "egret": "./tools/bin/egret"
   },

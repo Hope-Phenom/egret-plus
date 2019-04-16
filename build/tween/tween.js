@@ -992,7 +992,10 @@ var egret;
          */
         Tween.pauseAllTweens = function () {
             var tweens = Tween._tweens;
-            for (var i = 0, l = tweens.length; i < l; i++) {
+            if (tweens.length <= 0) {
+                return;
+            }
+            for (var i = 0; i < tweens.length; i++) {
                 var tween_3 = tweens[i];
                 tween_3.pause();
                 Tween._pauseTweens.push(tween_3);
