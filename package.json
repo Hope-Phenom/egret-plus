@@ -1,6 +1,6 @@
 {
   "name": "egret",
-  "version": "5.2.1801",
+  "version": "5.2.1802",
   "private": true,
   "author": "Hope_Phenom",
   "bin": {
@@ -230,7 +230,7 @@
       },
       {
         "name": "experimental",
-        "description": "egret实验功能库",
+        "description": "egret 实验功能库",
         "description_en": "egret experimental function lib",
         "files": [],
         "root": "src/extension/experimental",
@@ -256,6 +256,19 @@
         "root": "",
         "dependencies": [
           "egret"
+        ]
+      },
+      {
+        "name": "egret-plus",
+        "description": "egret-plus 拓展功能库",
+        "description_en": "egret-plus expanded function lib",
+        "files": [],
+        "root": "src/extension/egret-plus",
+        "dependencies": [
+          "egret",
+          "game",
+          "res",
+          "dragonBones"
         ]
       }
     ],

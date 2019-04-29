@@ -1,6 +1,6 @@
 {
   "name": "egret",
-  "version": "5.2.1801",
+  "version": "5.2.1802",
   "private": true,
   "author": "Hope_Phenom",
   "bin": {
@@ -441,6 +441,19 @@
           "res",
           "eui",
           "tween"
+        ]
+      },
+      {
+        "name": "egret-plus",
+        "description": "egret-plus expanded function lib",
+        "description_en": "egret-plus expanded function lib",
+        "files": [],
+        "root": "src/extension/egret-plus",
+        "dependencies": [
+          "egret",
+          "game",
+          "res",
+          "dragonBones"
         ]
       }
     ],
