@@ -1,16 +1,19 @@
 interface Array<T> {
     /**
      * 在一个数组中随机获取一个元素
+     * @version EgretPlus 1.2
      */
     random_get(): T;
 
     /**
      * 将该数组随机打乱
+     * @version EgretPlus 1.2
      */
     randomSort(): T[];
 
     /**
      * 从数组中随机获取一个元素，并将其删除
+     * @version EgretPlus 1.2
      */
     random_get_and_delete(): T;
 

@@ -52,7 +52,8 @@ class UpgradeCommand implements egret.Command {
             { "v": "5.2.1801", command: Upgrade_5_2_1801 },
             { "v": "5.2.19", command: Upgrade_5_2_19 },
             { "v": "5.2.22", command: Upgrade_5_2_22 },
-            { "v": "5.2.2201", command: Upgrade_5_2_2201 }
+            { "v": "5.2.2201", command: Upgrade_5_2_2201 },
+            { "v": "5.2.2201", command: Upgrade_5_2_2202 }
         ];
 
         try {
@@ -192,6 +193,15 @@ class Upgrade_5_2_22 {
 }
 
 class Upgrade_5_2_2201 {
+    async execute() {
+        file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "scripts", "vivogame"), path.join(egret.args.projectDir, "scripts", "vivogame"));
+        file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "scripts", "config.vivogame.ts"), path.join(egret.args.projectDir, "scripts", "config.vivogame.ts"));
+        file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "api.d.ts"), path.join(egret.args.projectDir, "scripts", "api.d.ts"));
+        return 0;
+    }
+}
+
+class Upgrade_5_2_2202 {
     async execute() {
         file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "scripts", "vivogame"), path.join(egret.args.projectDir, "scripts", "vivogame"));
         file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "scripts", "config.vivogame.ts"), path.join(egret.args.projectDir, "scripts", "config.vivogame.ts"));

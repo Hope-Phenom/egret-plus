@@ -74,7 +74,8 @@ var UpgradeCommand = /** @class */ (function () {
                             { "v": "5.2.1801", command: Upgrade_5_2_1801 },
                             { "v": "5.2.19", command: Upgrade_5_2_19 },
                             { "v": "5.2.22", command: Upgrade_5_2_22 },
-                            { "v": "5.2.2201", command: Upgrade_5_2_2201 }
+                            { "v": "5.2.2201", command: Upgrade_5_2_2201 },
+                            { "v": "5.2.2201", command: Upgrade_5_2_2202 }
                         ];
                         _a.label = 1;
                     case 1:
@@ -266,5 +267,20 @@ var Upgrade_5_2_2201 = /** @class */ (function () {
         });
     };
     return Upgrade_5_2_2201;
+}());
+var Upgrade_5_2_2202 = /** @class */ (function () {
+    function Upgrade_5_2_2202() {
+    }
+    Upgrade_5_2_2202.prototype.execute = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "scripts", "vivogame"), path.join(egret.args.projectDir, "scripts", "vivogame"));
+                file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "scripts", "config.vivogame.ts"), path.join(egret.args.projectDir, "scripts", "config.vivogame.ts"));
+                file.copyAsync(path.join(egret.root, "tools", "templates", "empty", "api.d.ts"), path.join(egret.args.projectDir, "scripts", "api.d.ts"));
+                return [2 /*return*/, 0];
+            });
+        });
+    };
+    return Upgrade_5_2_2202;
 }());
 module.exports = UpgradeCommand;

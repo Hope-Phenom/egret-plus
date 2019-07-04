@@ -40,6 +40,22 @@ interface Math {
      * @param end 终止点（包括）
      */
     getConsecutiveNumArr(start: number, end: number): number[];
+
+    /**
+     * 获取一定范围内，能整除某个数字的数组
+     * @param target 目标数字
+     * @param start 范围起始（包含）
+     * @param end 结束范围（包含）
+     */
+    getExactDivisionNumArr(target: number, start: number, end: number): number[];
+
+    /**
+     * 获取一定范围内，能被某个数字整除的数组
+     * @param target 目标数字
+     * @param start 范围起始（包含）
+     * @param end 结束范围（包含）
+     */
+    getBeExactDivisionNumArr(target: number, start: number, end: number): number[];
 }
 
 Math.limit = function (from: number, end: number): number {
@@ -108,6 +124,26 @@ Math.getConsecutiveNumArr = function (start: number, end: number): number[] {
     const arr: number[] = [];
     for (let i = start; i < end + 1; i++) {
         arr.push(i);
+    }
+    return arr;
+}
+
+Math.getExactDivisionNumArr = function getExactDivisionNumArr(target: number, start: number, end: number): number[] {
+    const arr: number[] = [];
+    for (let i = start; i <= end; i++) {
+        if ((target % i) === 0) {
+            arr.push(i);
+        }
+    }
+    return arr;
+}
+
+Math.getBeExactDivisionNumArr = function getBeExactDivisionNumArr(target: number, start: number, end: number): number[] {
+    const arr: number[] = [];
+    for (let i = start; i <= end; i++) {
+        if ((i % target) === 0) {
+            arr.push(i);
+        }
     }
     return arr;
 }
