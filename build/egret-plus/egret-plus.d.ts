@@ -61,6 +61,7 @@ declare namespace egret_plus.Screenshot {
     /**
      * 将一个egret.DisplayObject对象导出为egret.RenderTexture纹理并保存为文件在浏览器默认下载目录中.
      * @param item 显示对象
+     * @param fileName 文件名
      */
     function takeShotAndSaveFile(item: egret.DisplayObject, fileName: string): void;
     /**
@@ -108,14 +109,17 @@ declare namespace egret_plus.CustomEvent {
 interface Array<T> {
     /**
      * 在一个数组中随机获取一个元素
+     * @version EgretPlus 1.2
      */
     random_get(): T;
     /**
      * 将该数组随机打乱
+     * @version EgretPlus 1.2
      */
     randomSort(): T[];
     /**
      * 从数组中随机获取一个元素，并将其删除
+     * @version EgretPlus 1.2
      */
     random_get_and_delete(): T;
     /**
