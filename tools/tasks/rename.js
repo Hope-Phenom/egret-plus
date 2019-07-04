@@ -61,6 +61,14 @@ var RenamePlugin = /** @class */ (function () {
                         p = path.dirname(file.origin) + "/";
                         toFilename = match.to.replace('[name]', name).replace('[hash]', hash).replace('[ext]', extname).replace("[path]", p);
                         file.path = file.base + '/' + toFilename;
+                        if (this.options.callback) {
+                            this.options.callback({
+                                name: name,
+                                extname: extname,
+                                hash: hash,
+                                origin: p
+                            });
+                        }
                         if (this.options.verbose) {
                             console.log("RenamePlugin: " + file.origin + " => " + toFilename);
                         }

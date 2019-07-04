@@ -16,4 +16,4 @@
 - **更多功能还在开发中...**
 
 ### 当前版本
-[5.2.1802 点此跳转至详情](https://chaoshengze.github.io/egret-plus/?file=001-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/02-%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/9997-5.2.1802)
+[5.2.2201 点此跳转至详情](https://chaoshengze.github.io/egret-plus/?file=001-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/02-%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/9997-5.2.2201)
