@@ -70,6 +70,9 @@ var ManifestPlugin = /** @class */ (function () {
                     file.outputDir = "";
                     file.path = path.join(file.base, new_file_path);
                     relative = file.relative.split("\\").join('/');
+                    if (this.options.info && this.options.info.target == 'vivogame') {
+                        file.path = path.join(file.base, '../', 'engine', new_file_path);
+                    }
                     if (file.origin.indexOf('libs/') >= 0) {
                         manifest.initial.push(relative);
                     }
@@ -86,17 +89,23 @@ var ManifestPlugin = /** @class */ (function () {
     };
     ManifestPlugin.prototype.onFinish = function (pluginContext) {
         return __awaiter(this, void 0, void 0, function () {
-            var output, extname, contents;
+            var output, extname, contents, target;
             return __generator(this, function (_a) {
                 output = this.options.output;
                 extname = path.extname(output);
                 contents = '';
+                target = pluginContext.buildConfig.target;
                 switch (extname) {
                     case ".json":
                         contents = JSON.stringify(manifest, null, '\t');
                         break;
                     case ".js":
-                        contents = manifest.initial.concat(manifest.game).map(function (fileName) { return "require(\"./" + fileName + "\")"; }).join("\n");
+                        if (target == 'vivogame') {
+                            contents = manifest.initial.concat(manifest.game).map(function (fileName) { return "require(\"" + fileName + "\")"; }).join("\n");
+                        }
+                        else {
+                            contents = manifest.initial.concat(manifest.game).map(function (fileName) { return "require(\"./" + fileName + "\")"; }).join("\n");
+                        }
                         break;
                 }
                 pluginContext.createFile(this.options.output, new Buffer(contents));
