@@ -17,3 +17,13 @@
 
 ### 当前版本
 [5.2.2202 点此跳转至详情](https://chaoshengze.github.io/egret-plus/?file=001-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/02-%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/9996-5.2.2202)
+
+### 快速获取
+您可以使用  
+``` Bash
+git clone git@github.com:ChaoShengze/egret-plus.git [版本号]  
+```
+来获取对应版本，譬如获取v5.2.2202只需要使用命令：  
+``` Bash
+git clone git@github.com:ChaoShengze/egret-plus.git v5.2.2202
+```
