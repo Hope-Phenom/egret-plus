@@ -17,6 +17,7 @@ namespace egret_plus.Screenshot {
     /**
      * 将一个egret.DisplayObject对象导出为egret.RenderTexture纹理并保存为文件在浏览器默认下载目录中.
      * @param item 显示对象
+     * @param fileName 文件名
      */
     export function takeShotAndSaveFile(item: egret.DisplayObject, fileName: string): void {
         const texture = this.takeShot(item);

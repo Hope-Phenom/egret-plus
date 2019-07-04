@@ -19,3 +19,9 @@
 - **原生拓展**
     - [Array类](?file=003-egret-plus库/001-原生拓展/001-Array类 "Array类")
     - [Math类](?file=003-egret-plus库/001-原生拓展/002-Math类 "Math类")
+- **工具类**
+    - [CreateDB](?file=003-egret-plus库/002-工具类/001-CreateDB "CreateDB")
+    - [CreateMC](?file=003-egret-plus库/002-工具类/002-CreateMC "CreateMC")
+    - [富文本编码](?file=003-egret-plus库/002-工具类/003-富文本编码 "富文本编码")
+    - [Screenshot](?file=003-egret-plus库/002-工具类/004-Screenshot "Screenshot")
+    - [异步Sleep](?file=003-egret-plus库/002-工具类/005-异步Sleep "异步Sleep")
